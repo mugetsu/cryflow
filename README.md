@@ -1,2 +1,2 @@
 # cryflow
-Show off words in a cryptic manner
+(/ˌcryptˈflow/) show off words in a cryptic manner
