@@ -26,8 +26,12 @@ var cryflow = cryflow || {};
 
             // update word every x seconds
             cryflow.interval = setInterval(function() {
+
+                // reset and start scrambling the strings
                 cryflow.scrambler(words, timeout);
+
                 // console.log('interval');
+
             }, timeout);
 
         },
@@ -64,8 +68,6 @@ var cryflow = cryflow || {};
 
                             // reset timeouts
                             clearTimeout(fillup);
-                            clearTimeout(cryflow.breacher);
-                            clearTimeout(cryflow.interval);
 
                             cryflow.scrambler(words, timeout);
 
@@ -116,8 +118,6 @@ var cryflow = cryflow || {};
 
                         // reset timeouts
                         clearTimeout(cleanup);
-                        clearTimeout(cryflow.breacher);
-                        clearTimeout(cryflow.interval);
 
                         cryflow.scrambler(words, timeout);
 
@@ -142,8 +142,6 @@ var cryflow = cryflow || {};
 
                                 // reset timeouts
                                 clearTimeout(cleanup);
-                                clearTimeout(cryflow.breacher);
-                                clearTimeout(cryflow.interval);
 
                                 cryflow.scrambler(words, timeout);
 
@@ -165,8 +163,14 @@ var cryflow = cryflow || {};
 
         },
         scrambler: function (words, timeout) {
+
+            // reset timeouts
+            clearTimeout(cryflow.breacher);
+            clearTimeout(cryflow.interval);
+
             cryflow.pick(words); // get random word
             cryflow.breach(words, timeout); // break word
+
         }
     };
 
