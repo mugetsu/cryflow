@@ -25,37 +25,26 @@ var cryflow = cryflow || {};
             cryflow.element = element;
 
             function start() {
-
-                // get random words
-                cryflow.pick(words);
-
-                // break words
-                cryflow.breach(words, timeout);
-
+                cryflow.scrambler(words, timeout);
             };
 
             // update word every x seconds
             cryflow.interval = setInterval(function() {
-
                 start();
-
-                console.log('interval');
-
+                // console.log('interval');
             }, timeout);
 
         },
         pick: function (words) {
-
             var pick = words[Math.floor(Math.random() * (words.length - 1))];
-            
             cryflow.prediction = pick;
-
         },
         breach: function (words, timeout) {
 
             var text = document.getElementById(cryflow.element),
                 splitTimeout = timeout / text.innerHTML.length;
 
+            // get next word
             cryflow.pick(words);
             
             // start breaching
@@ -68,14 +57,13 @@ var cryflow = cryflow || {};
                     clearTimeout(cryflow.interval);
 
                     var fillup,
-                        fillupTimeout = timeout / text.innerHTML.length;
+                        fillupTimeout = timeout / cryflow.prediction.length;
 
+                    // fill up character count based on predicted word
                     fillup = setInterval(function() {
 
                         if(text.innerHTML.length != cryflow.prediction.length) {
-                        
                             text.innerHTML += cryflow.characters.charAt(Math.floor(Math.random() * cryflow.characters.length));
-
                         } else {
 
                             // reset timeouts
@@ -83,50 +71,41 @@ var cryflow = cryflow || {};
                             clearTimeout(cryflow.breacher);
                             clearTimeout(cryflow.interval);
 
-                            // get random words
-                            cryflow.pick(words);
-
-                            // break words
-                            cryflow.breach(words, timeout);
+                            cryflow.scrambler(words, timeout);
 
                         }
 
-                        console.log('fillup');
+                        // console.log('fillup');
 
                     }, fillupTimeout);
 
                 } else {
 
                     text.innerHTML = text.innerHTML.substring(0, cryflow.count) + cryflow.characters.charAt(Math.floor(Math.random() * cryflow.characters.length)) + text.innerHTML.substring(cryflow.count + 1);
-
                     cryflow.count = (cryflow.count + 1) % text.innerHTML.length;
 
                     if(cryflow.count >= (cryflow.prediction.length - 1)) {
-
                         cryflow.figure(words, timeout);
-
                     }
 
                 }
 
-                console.log('breacher');
+                // console.log('breacher');
 
             }, splitTimeout);
 
         },
         figure: function (words, timeout) {
 
+            // console.log(text.innerHTML + ' -> ' + cryflow.prediction);
+
             // reset timeouts
             clearTimeout(cryflow.breacher);
             clearTimeout(cryflow.interval);
 
-            // console.log(cryflow.count);
-
             var text = document.getElementById(cryflow.element),
                 splitTimeout = timeout / cryflow.prediction.length,
                 predicted_length = cryflow.prediction.length;
-
-            console.log(text.innerHTML + ' -> ' + cryflow.prediction);
 
             // start figuring
             cryflow.figurer = setInterval(function() {
@@ -134,12 +113,8 @@ var cryflow = cryflow || {};
                 if(cryflow.prediction.length > text.innerHTML.length) {
 
                     text.innerHTML = text.innerHTML.substring(0, predicted_length) + cryflow.prediction.charAt(predicted_length - 1) + text.innerHTML.substring(predicted_length + 1);
-
                     predicted_length++;
-
                     cryflow.count = (cryflow.count + 1) % text.innerHTML.length;
-
-                    console.log(predicted_length +', '+ cryflow.prediction.length);
 
                     if(predicted_length === cryflow.prediction.length) {
 
@@ -148,34 +123,25 @@ var cryflow = cryflow || {};
                         clearTimeout(cryflow.breacher);
                         clearTimeout(cryflow.interval);
 
-                        // get random words
-                        cryflow.pick(words);
-
-                        // break words
-                        cryflow.breach(words, timeout);
+                        cryflow.scrambler(words, timeout);
 
                     }
 
                 } else {
 
                     text.innerHTML = text.innerHTML.substring(0, predicted_length) + cryflow.prediction.charAt(predicted_length - 1) + text.innerHTML.substring(predicted_length + 1);
-
                     predicted_length--;
-
                     cryflow.count = (cryflow.count + 1) % text.innerHTML.length;
 
                     if(predicted_length < 0) {
 
                         var cleanup,
-                            cleanupTimeout = timeout / text.innerHTML.length;
+                            cleanupTimeout = timeout / cryflow.prediction.length;
 
                         cleanup = setInterval(function() {
 
                             if(text.innerHTML.length != cryflow.prediction.length) {
-
-                                // remove last character in a string
                                 text.innerHTML = text.innerHTML.substring(0, cryflow.prediction.length) + '' + text.innerHTML.substring(cryflow.prediction.length + 1);
-
                             } else {
 
                                 // reset timeouts
@@ -183,15 +149,11 @@ var cryflow = cryflow || {};
                                 clearTimeout(cryflow.breacher);
                                 clearTimeout(cryflow.interval);
 
-                                // get random words
-                                cryflow.pick(words);
-
-                                // break words
-                                cryflow.breach(words, timeout);
+                                cryflow.scrambler(words, timeout);
 
                             }
 
-                            console.log('cleanup');
+                            // console.log('cleanup');
 
                         }, cleanupTimeout);
 
@@ -201,10 +163,14 @@ var cryflow = cryflow || {};
 
                 }
 
-                console.log('figurer');
+                // console.log('figurer');
 
             }, splitTimeout);
 
+        },
+        scrambler: function (words, timeout) {
+            cryflow.pick(words); // get random word
+            cryflow.breach(words, timeout); // break word
         }
     };
 
@@ -212,25 +178,27 @@ var cryflow = cryflow || {};
     (function($){
 
         // prerequisites, word timeout and array of words
-        var wordTimeout = 1500,
+        var wordTimeout = 1200,
             word_array = [
-                "front-end",
-                "playstation",
-                "node",
-                "grunt",
-                "bower",
-                "webdriver",
-                "mocha",
-                "chai",
-                "socket",
-                "jquery",
-                "angular",
-                "elasticsearch",
-                "express",
-                "html5",
-                "css3",
-                "foundation",
-                "bootstrap"
+                "NodeJS",
+                "GruntJS",
+                "BowerIO",
+                "WebDriver",
+                "MochaJS",
+                "ChaiJS",
+                "SocketIO",
+                "jQuery",
+                "AngularJS",
+                "ElasticSearch",
+                "ExpressJS",
+                "REST",
+                "HTML5",
+                "Jade",
+                "CSS3",
+                "SASS",
+                "Git",
+                "Foundation",
+                "Bootstrap"
             ];
 
         // start cryflow

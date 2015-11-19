@@ -12,25 +12,27 @@ Show off words in a cryptic manner
 (function($){
 
     // prerequisites, word timeout and array of words
-    var wordTimeout = 1500,
+    var wordTimeout = 1200,
         word_array = [
-            "front-end",
-            "playstation",
-            "node",
-            "grunt",
-            "bower",
-            "webdriver",
-            "mocha",
-            "chai",
-            "socket",
-            "jquery",
-            "angular",
-            "elasticsearch",
-            "express",
-            "html5",
-            "css3",
-            "foundation",
-            "bootstrap"
+            "NodeJS",
+            "GruntJS",
+            "BowerIO",
+            "WebDriver",
+            "MochaJS",
+            "ChaiJS",
+            "SocketIO",
+            "jQuery",
+            "AngularJS",
+            "ElasticSearch",
+            "ExpressJS",
+            "REST",
+            "HTML5",
+            "Jade",
+            "CSS3",
+            "SASS",
+            "Git",
+            "Foundation",
+            "Bootstrap"
         ];
 
     // start cryflow
