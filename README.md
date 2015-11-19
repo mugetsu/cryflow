@@ -14,7 +14,7 @@ Show off words in a cryptic manner
 ```
 
 ```html
-<!-- Add to HEAD or BEFORE CLOSE BODT TAG -->
+<!-- Add to HEAD or BEFORE CLOSE BODY TAG -->
 <script src="cryflow.min.js"></script>
 ```
 
