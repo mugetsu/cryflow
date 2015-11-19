@@ -3,6 +3,10 @@ Cryflow (/ˌcryptˈflow/)
 
 Show off words in a cryptic manner
 
+###Loop
+
+`word -> random string (transition: left to right) -> word -> random string (transition: right to left)`
+
 ##Basic Usage:
 
 'text' is the id of the element you want to use for cryflow.
