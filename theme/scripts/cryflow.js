@@ -24,13 +24,9 @@ var cryflow = cryflow || {};
             // set target element
             cryflow.element = element;
 
-            function start() {
-                cryflow.scrambler(words, timeout);
-            };
-
             // update word every x seconds
             cryflow.interval = setInterval(function() {
-                start();
+                cryflow.scrambler(words, timeout);
                 // console.log('interval');
             }, timeout);
 
@@ -173,37 +169,5 @@ var cryflow = cryflow || {};
             cryflow.breach(words, timeout); // break word
         }
     };
-
-    // on load
-    (function($){
-
-        // prerequisites, word timeout and array of words
-        var wordTimeout = 1200,
-            word_array = [
-                "NodeJS",
-                "GruntJS",
-                "BowerIO",
-                "WebDriver",
-                "MochaJS",
-                "ChaiJS",
-                "SocketIO",
-                "jQuery",
-                "AngularJS",
-                "ElasticSearch",
-                "ExpressJS",
-                "REST",
-                "HTML5",
-                "Jade",
-                "CSS3",
-                "SASS",
-                "Git",
-                "Foundation",
-                "Bootstrap"
-            ];
-
-        // start cryflow
-        cryflow.init('text', word_array, wordTimeout);
-
-    })();
 
 })();
