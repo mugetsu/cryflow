@@ -53,7 +53,7 @@ var cryflow = cryflow || {};
                     clearTimeout(cryflow.interval);
 
                     var fillup,
-                        fillupTimeout = timeout / cryflow.prediction.length;
+                        fillupTimeout = timeout / text.innerHTML.length;
 
                     // fill up character count based on predicted word
                     fillup = setInterval(function() {
@@ -100,7 +100,7 @@ var cryflow = cryflow || {};
             clearTimeout(cryflow.interval);
 
             var text = document.getElementById(cryflow.element),
-                splitTimeout = timeout / cryflow.prediction.length,
+                splitTimeout = timeout / text.innerHTML.length,
                 predicted_length = cryflow.prediction.length;
 
             // start figuring
@@ -132,7 +132,7 @@ var cryflow = cryflow || {};
                     if(predicted_length < 0) {
 
                         var cleanup,
-                            cleanupTimeout = timeout / cryflow.prediction.length;
+                            cleanupTimeout = timeout / text.innerHTML.length;
 
                         cleanup = setInterval(function() {
 
