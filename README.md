@@ -3,15 +3,15 @@ Cryflow (/ˌcryptˈflow/)
 
 Show off words in a cryptic manner
 
-###Loop
+## Loop
 
 `word -> random string (transition: left to right) -> word -> random string (transition: right to left)`
 
-##Basic Usage:
+### Basic Usage
 
 'text' is the id of the element you want to use for cryflow.
 
-###HTML
+## HTML
 
 ```html
 <span id="text">init()</span>
@@ -22,7 +22,7 @@ Show off words in a cryptic manner
 <script src="cryflow.min.js"></script>
 ```
 
-###Javascript
+## Javascript
 
 ```javascript
 // prerequisites, word timeout and array of words
@@ -53,7 +53,7 @@ var wordTimeout = 1200,
 cryflow.init('text', word_array, wordTimeout);
 ```
 
-##Demo:
+## Demo
 
 [Sample](http://randell.pancakeapps.com/)
 
