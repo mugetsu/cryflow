@@ -1,4 +1,4 @@
-# cryflow
+# cryflow <a href="https://www.npmjs.com/package/cryflow"><img src="https://badgen.net/npm/v/cryflow" alt="Version"></a>
 
 > (/ˌcryptˈflow/) Show off words in a cryptic manner.
 
