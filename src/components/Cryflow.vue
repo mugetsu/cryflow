@@ -19,7 +19,6 @@ export default {
   },
   data () {
     return {
-      el: null,
       updatedText: null,
       resolve: null,
       queue: [],
@@ -29,7 +28,7 @@ export default {
   },
   methods: {
     setText (newText) {
-      const oldText = this.el.innerText
+      const oldText = this.$el.textContent
       const length = Math.max(oldText.length, newText.length)
       const promise = new Promise((resolve) => {
         this.resolve = resolve
@@ -66,7 +65,7 @@ export default {
           output += from
         }
       }
-      this.el.innerHTML = output
+      this.$el.innerHTML = output
       if (complete === this.queue.length) {
         this.resolve()
       } else {
@@ -79,7 +78,6 @@ export default {
     }
   },
   mounted () {
-    this.el = this.$el
     this.updatedText = this.updateText.bind(this)
     let counter = 0
     const next = () => {

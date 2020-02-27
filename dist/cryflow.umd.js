@@ -25,7 +25,6 @@
     },
     data: function data () {
       return {
-        el: null,
         updatedText: null,
         resolve: null,
         queue: [],
@@ -37,7 +36,7 @@
       setText: function setText (newText) {
         var this$1 = this;
 
-        var oldText = this.el.innerText;
+        var oldText = this.$el.textContent;
         var length = Math.max(oldText.length, newText.length);
         var promise = new Promise(function (resolve) {
           this$1.resolve = resolve;
@@ -79,7 +78,7 @@
             output += from;
           }
         }
-        this.el.innerHTML = output;
+        this.$el.innerHTML = output;
         if (complete === this.queue.length) {
           this.resolve();
         } else {
@@ -94,7 +93,6 @@
     mounted: function mounted () {
       var this$1 = this;
 
-      this.el = this.$el;
       this.updatedText = this.updateText.bind(this);
       var counter = 0;
       var next = function () {
