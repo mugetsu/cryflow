@@ -4,12 +4,12 @@
 
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
 
 ### Usage
