@@ -5,7 +5,7 @@
   "module": "dist/cryflow.esm.js",
   "unpkg": "dist/cryflow.min.js",
   "browser": {
-    "./sfc": "src/cryflow.vue"
+    "./sfc": "src/components/Cryflow.vue"
   },
   "files": [
     "dist/*",
